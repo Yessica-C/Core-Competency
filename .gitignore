@@ -16,7 +16,11 @@ data_*/
 mono_crash.*.json
 
 # Ignore my IDE and other workspace config folders
-.vs/
-.idea/
+*.vs/
+*.idea/
 .git/
-.VSCodeCounter/
+*.VSCodeCounter/
+
+# Blender Artifacts
+*.blend1
+*.blend1
