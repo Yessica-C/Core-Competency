@@ -1,0 +1,28 @@
+[gd_scene format=3 uid="uid://dm4aaa4ra64jo"]
+
+[ext_resource type="PackedScene" uid="uid://63fowme61838" path="res://resources/Keyboard.blend" id="1_uah7k"]
+[ext_resource type="PackedScene" uid="uid://b1o3dp14lgc3u" path="res://resources/ComputerMonitor.blend" id="2_ycc6b"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_p4rlk"]
+size = Vector3(0.58, 0.06, 0.155)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wuh27"]
+size = Vector3(0.4, 0.45, 0.31)
+
+[node name="DeskComputer" type="RigidBody3D" unique_id=1158682513]
+mass = 15.0
+can_sleep = false
+
+[node name="Keyboard" parent="." unique_id=1238973546 instance=ExtResource("1_uah7k")]
+transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0, 0.051311277)
+
+[node name="ComputerMonitor" parent="." unique_id=1397909593 instance=ExtResource("2_ycc6b")]
+transform = Transform3D(-4.8084328e-09, -1.5570877e-15, -0.11, -0.0009522398, 0.10999587, 4.1623725e-11, 0.10999587, 0.0009522398, -4.808253e-09, 0, 0.20038441, -0.14490084)
+
+[node name="KeyboardShape" type="CollisionShape3D" parent="." unique_id=538723834]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0.051415406)
+shape = SubResource("BoxShape3D_p4rlk")
+
+[node name="MonitorShape" type="CollisionShape3D" parent="." unique_id=1270807985]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.191, -0.184)
+shape = SubResource("BoxShape3D_wuh27")

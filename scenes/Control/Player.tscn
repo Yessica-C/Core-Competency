@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cdw1lh84yj5qy"]
+[gd_scene format=3 uid="uid://brrgtb4d6hwi8"]
 
 [ext_resource type="Script" uid="uid://cbj0p5kurkusk" path="res://source/PlayerController.cs" id="1_rpqav"]
 [ext_resource type="Script" uid="uid://cn7xdb12j5m4" path="res://source/CameraVerticalGimble.cs" id="2_kyqiw"]
@@ -14,6 +14,7 @@ Gravity = 20.0
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="." unique_id=1218767311]
 shape = SubResource("CylinderShape3D_rpqav")
+debug_color = Color(0.9596842, 0.76104796, 0, 0.41960785)
 
 [node name="CameraVerticalGimble" type="Node3D" parent="." unique_id=116543524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)

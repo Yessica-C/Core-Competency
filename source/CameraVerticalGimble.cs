@@ -22,6 +22,5 @@ public partial class CameraVerticalGimble : Node3D
         
         // Apply rotation to the player
         Rotation = new Vector3(rotationX, 0, 0);
-        GD.Print(rotationX);
     }
 }

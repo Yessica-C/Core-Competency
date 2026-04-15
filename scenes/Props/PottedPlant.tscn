@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dgr3rxwc0y2qo"]
+
+[ext_resource type="PackedScene" uid="uid://c17x5hchlwbxb" path="res://resources/PottedPlant.blend" id="1_0w27f"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_bpqn8"]
+size = Vector3(0.305, 1, 0.305)
+
+[node name="PottedPlant" type="RigidBody3D" unique_id=1079158969]
+mass = 10.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=2111415169]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+shape = SubResource("BoxShape3D_bpqn8")
+
+[node name="PottedPlant" parent="." unique_id=1013221676 instance=ExtResource("1_0w27f")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.105, 0)

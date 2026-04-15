@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b6vrrqcutydeg"]
+
+[ext_resource type="PackedScene" uid="uid://ch1gdijj2yyyy" path="res://resources/WoodenExecutiveDesk.blend" id="1_06u5q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_704ng"]
+size = Vector3(1.95, 0.75, 0.66)
+
+[node name="ExecutiveDesk" type="StaticBody3D" unique_id=1119628824]
+
+[node name="WoodenExecutiveDesk" parent="." unique_id=1253555978 instance=ExtResource("1_06u5q")]
+transform = Transform3D(-0.27, 0, -2.360415e-08, 0, 0.27, 0, 2.360415e-08, 0, -0.27, 0, 0.881, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1124880159]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.375, 0)
+shape = SubResource("BoxShape3D_704ng")
