@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b42er6ple3qux"
-path="res://.godot/imported/Computer Monitor.blend-a541307bb4bcca6c8d8b514b523d6386.scn"
+uid="uid://ch1gdijj2yyyy"
+path="res://.godot/imported/WoodenExecutiveDesk.blend-fe048933f5e652146b2c9c996638ebab.scn"
 
 [deps]
 
-source_file="res://Resources/Computer Monitor.blend"
-dest_files=["res://.godot/imported/Computer Monitor.blend-a541307bb4bcca6c8d8b514b523d6386.scn"]
+source_file="res://resources/WoodenExecutiveDesk.blend"
+dest_files=["res://.godot/imported/WoodenExecutiveDesk.blend-fe048933f5e652146b2c9c996638ebab.scn"]
 
 [params]
 

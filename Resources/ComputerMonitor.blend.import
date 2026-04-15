@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://63fowme61838"
-path="res://.godot/imported/Keyboard.blend-e12707d1d53e68d97237c4bcc400bd59.scn"
+uid="uid://b1o3dp14lgc3u"
+path="res://.godot/imported/ComputerMonitor.blend-0e6fc376713ffef637bba2552ec6b8fb.scn"
 
 [deps]
 
-source_file="res://resources/Keyboard.blend"
-dest_files=["res://.godot/imported/Keyboard.blend-e12707d1d53e68d97237c4bcc400bd59.scn"]
+source_file="res://resources/ComputerMonitor.blend"
+dest_files=["res://.godot/imported/ComputerMonitor.blend-0e6fc376713ffef637bba2552ec6b8fb.scn"]
 
 [params]
 

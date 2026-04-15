@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d4jblua2hqa8u"
-path.s3tc="res://.godot/imported/Keyboard.png-df924561b28821207ffece306963d3cf.s3tc.ctex"
+uid="uid://c7hfrujrq4ajs"
+path.s3tc="res://.godot/imported/Keyboard.png-8ec53c95d7441c3eecd94b3e579f9512.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://Resources/textures/Keyboard.png"
-dest_files=["res://.godot/imported/Keyboard.png-df924561b28821207ffece306963d3cf.s3tc.ctex"]
+source_file="res://resources/textures/Keyboard.png"
+dest_files=["res://.godot/imported/Keyboard.png-8ec53c95d7441c3eecd94b3e579f9512.s3tc.ctex"]
 
 [params]
 
