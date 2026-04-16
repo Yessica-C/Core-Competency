@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bkuboj5kew4vg"
-path.s3tc="res://.godot/imported/Plant Pot.png-af8030ad2c0916d9106337a8e6f9280a.s3tc.ctex"
+uid="uid://blbedmo76gy3v"
+path.s3tc="res://.godot/imported/Computer Monitor.png-b7f11771aa30e81c2c619f0c71340650.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/textures/Plant Pot.png"
-dest_files=["res://.godot/imported/Plant Pot.png-af8030ad2c0916d9106337a8e6f9280a.s3tc.ctex"]
+source_file="res://resources/Models/textures/Computer Monitor.png"
+dest_files=["res://.godot/imported/Computer Monitor.png-b7f11771aa30e81c2c619f0c71340650.s3tc.ctex"]
 
 [params]
 

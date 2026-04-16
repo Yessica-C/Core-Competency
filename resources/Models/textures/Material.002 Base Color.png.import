@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://tmx1imm6ofhr"
-path.s3tc="res://.godot/imported/Wooden Executive Desk.png-859f1df6ff16622a6e26171fbb45e74d.s3tc.ctex"
+uid="uid://hbmimocesyiy"
+path.s3tc="res://.godot/imported/Material.002 Base Color.png-cada63278afa225453a3a6fe73bfb55a.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/textures/Wooden Executive Desk.png"
-dest_files=["res://.godot/imported/Wooden Executive Desk.png-859f1df6ff16622a6e26171fbb45e74d.s3tc.ctex"]
+source_file="res://resources/Models/textures/Material.002 Base Color.png"
+dest_files=["res://.godot/imported/Material.002 Base Color.png-cada63278afa225453a3a6fe73bfb55a.s3tc.ctex"]
 
 [params]
 

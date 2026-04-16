@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0qfqksywh1b5"
-path.s3tc="res://.godot/imported/MonitorNormal.png-70d75b35f97ebea3d9978e435ce94151.s3tc.ctex"
+uid="uid://ddafuiw6de62e"
+path.s3tc="res://.godot/imported/KeyboardNormal.png-685910c3d133c7a86aeaa6a288adc6c8.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/normals/MonitorNormal.png"
-dest_files=["res://.godot/imported/MonitorNormal.png-70d75b35f97ebea3d9978e435ce94151.s3tc.ctex"]
+source_file="res://resources/Models/normals/KeyboardNormal.png"
+dest_files=["res://.godot/imported/KeyboardNormal.png-685910c3d133c7a86aeaa6a288adc6c8.s3tc.ctex"]
 
 [params]
 
@@ -27,7 +27,7 @@ compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=1
-roughness/src_normal="res://resources/textures/MonitorNormal.png"
+roughness/src_normal="res://resources/normals/KeyboardNormal.png"
 process/channel_remap/red=0
 process/channel_remap/green=1
 process/channel_remap/blue=2

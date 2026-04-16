@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://c17x5hchlwbxb"
-path="res://.godot/imported/PottedPlant.blend-7effbae78c75e7d432c9369654f5d611.scn"
+uid="uid://b1o3dp14lgc3u"
+path="res://.godot/imported/ComputerMonitor.blend-4f9301e11e38abae429142597274567c.scn"
 
 [deps]
 
-source_file="res://resources/PottedPlant.blend"
-dest_files=["res://.godot/imported/PottedPlant.blend-7effbae78c75e7d432c9369654f5d611.scn"]
+source_file="res://resources/Models/ComputerMonitor.blend"
+dest_files=["res://.godot/imported/ComputerMonitor.blend-4f9301e11e38abae429142597274567c.scn"]
 
 [params]
 

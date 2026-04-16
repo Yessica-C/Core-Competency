@@ -1,13 +1,16 @@
 [gd_scene format=3 uid="uid://bc6o6wlxvsogu"]
 
-[ext_resource type="PackedScene" uid="uid://bkqibe2nd4at6" path="res://resources/FileFolder.blend" id="1_gv2tn"]
+[ext_resource type="Script" uid="uid://cuawrisbaf6ca" path="res://source/Prop.cs" id="1_54re5"]
+[ext_resource type="PackedScene" uid="uid://bkqibe2nd4at6" path="res://resources/Models/FileFolder.blend" id="1_gv2tn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_54re5"]
 size = Vector3(0.3, 0.05, 0.24)
 
-[node name="FileFolder" type="RigidBody3D" unique_id=335447311]
+[node name="FileFolder" type="RigidBody3D" unique_id=1163095980]
 mass = 0.1
 can_sleep = false
+script = ExtResource("1_54re5")
+metadata/_custom_type_script = "uid://cuawrisbaf6ca"
 
 [node name="FileFolder" parent="." unique_id=1711964015 instance=ExtResource("1_gv2tn")]
 transform = Transform3D(0.145, 0, 0, 0, 0.145, 0, 0, 0, 0.145, 0, 0, 0.10430345)

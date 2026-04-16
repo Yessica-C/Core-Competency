@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://63fowme61838"
-path="res://.godot/imported/Keyboard.blend-e12707d1d53e68d97237c4bcc400bd59.scn"
+uid="uid://c17x5hchlwbxb"
+path="res://.godot/imported/PottedPlant.blend-fe98589fce3954ba0eb655197be2c2c8.scn"
 
 [deps]
 
-source_file="res://resources/Keyboard.blend"
-dest_files=["res://.godot/imported/Keyboard.blend-e12707d1d53e68d97237c4bcc400bd59.scn"]
+source_file="res://resources/Models/PottedPlant.blend"
+dest_files=["res://.godot/imported/PottedPlant.blend-fe98589fce3954ba0eb655197be2c2c8.scn"]
 
 [params]
 

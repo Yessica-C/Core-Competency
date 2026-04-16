@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://dn2afx051mowh"
-path="res://.godot/imported/FilingCabinetFrame.blend-078943ecb1f7d53d094c58cab94a4046.scn"
+uid="uid://bkqibe2nd4at6"
+path="res://.godot/imported/FileFolder.blend-e414cd56010c608760d03ec78927b005.scn"
 
 [deps]
 
-source_file="res://resources/FilingCabinetFrame.blend"
-dest_files=["res://.godot/imported/FilingCabinetFrame.blend-078943ecb1f7d53d094c58cab94a4046.scn"]
+source_file="res://resources/Models/FileFolder.blend"
+dest_files=["res://.godot/imported/FileFolder.blend-e414cd56010c608760d03ec78927b005.scn"]
 
 [params]
 

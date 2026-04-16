@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://b1o3dp14lgc3u"
-path="res://.godot/imported/ComputerMonitor.blend-0e6fc376713ffef637bba2552ec6b8fb.scn"
+uid="uid://ce5wnkb6nbvds"
+path="res://.godot/imported/Leaf.blend-5be3c42df661280561af7332ab882c23.scn"
 
 [deps]
 
-source_file="res://resources/ComputerMonitor.blend"
-dest_files=["res://.godot/imported/ComputerMonitor.blend-0e6fc376713ffef637bba2552ec6b8fb.scn"]
+source_file="res://resources/Models/Leaf.blend"
+dest_files=["res://.godot/imported/Leaf.blend-5be3c42df661280561af7332ab882c23.scn"]
 
 [params]
 

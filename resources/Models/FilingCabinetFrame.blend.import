@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://ch1gdijj2yyyy"
-path="res://.godot/imported/WoodenExecutiveDesk.blend-fe048933f5e652146b2c9c996638ebab.scn"
+uid="uid://dn2afx051mowh"
+path="res://.godot/imported/FilingCabinetFrame.blend-4a9f91a6750b31c9d58fea00d71bd9dc.scn"
 
 [deps]
 
-source_file="res://resources/WoodenExecutiveDesk.blend"
-dest_files=["res://.godot/imported/WoodenExecutiveDesk.blend-fe048933f5e652146b2c9c996638ebab.scn"]
+source_file="res://resources/Models/FilingCabinetFrame.blend"
+dest_files=["res://.godot/imported/FilingCabinetFrame.blend-4a9f91a6750b31c9d58fea00d71bd9dc.scn"]
 
 [params]
 

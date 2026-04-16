@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://dm4aaa4ra64jo"]
 
-[ext_resource type="PackedScene" uid="uid://63fowme61838" path="res://resources/Keyboard.blend" id="1_uah7k"]
-[ext_resource type="PackedScene" uid="uid://b1o3dp14lgc3u" path="res://resources/ComputerMonitor.blend" id="2_ycc6b"]
+[ext_resource type="PackedScene" uid="uid://63fowme61838" path="res://resources/Models/Keyboard.blend" id="1_uah7k"]
+[ext_resource type="Script" uid="uid://cuawrisbaf6ca" path="res://source/Prop.cs" id="1_ycc6b"]
+[ext_resource type="PackedScene" uid="uid://b1o3dp14lgc3u" path="res://resources/Models/ComputerMonitor.blend" id="2_ycc6b"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_p4rlk"]
 size = Vector3(0.58, 0.06, 0.155)
@@ -9,9 +10,11 @@ size = Vector3(0.58, 0.06, 0.155)
 [sub_resource type="BoxShape3D" id="BoxShape3D_wuh27"]
 size = Vector3(0.4, 0.45, 0.31)
 
-[node name="DeskComputer" type="RigidBody3D" unique_id=1158682513]
+[node name="DeskComputer" type="RigidBody3D" unique_id=1448580718]
 mass = 15.0
 can_sleep = false
+script = ExtResource("1_ycc6b")
+metadata/_custom_type_script = "uid://cuawrisbaf6ca"
 
 [node name="Keyboard" parent="." unique_id=1238973546 instance=ExtResource("1_uah7k")]
 transform = Transform3D(0.075, 0, 0, 0, 0.075, 0, 0, 0, 0.075, 0, 0, 0.051311277)

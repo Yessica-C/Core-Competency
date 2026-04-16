@@ -3,7 +3,7 @@ using Godot;
 public partial class CameraVerticalGimble : Node3D
 {
     [Export]
-    public float MouseSensitivity = 0.005f;
+    public float VerticalMouseSensitivity = 0.005f;
     private float rotationX = 0;
 
     public override void _Input(InputEvent @event)
@@ -15,7 +15,7 @@ public partial class CameraVerticalGimble : Node3D
     }
     private void HandleRotation(InputEventMouseMotion mouseMotion)
     {
-        rotationX -= mouseMotion.Relative.Y * MouseSensitivity;
+        rotationX -= mouseMotion.Relative.Y * VerticalMouseSensitivity;
         
         // Limit vertical rotation to prevent flipping (radians)
         rotationX = Mathf.Clamp(rotationX, -1.5f, 1.5f);

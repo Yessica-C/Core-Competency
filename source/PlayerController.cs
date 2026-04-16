@@ -1,5 +1,6 @@
 using Godot;
 using System;
+using System.Runtime.CompilerServices;
 
 public partial class PlayerController : CharacterBody3D
 {
@@ -13,23 +14,37 @@ public partial class PlayerController : CharacterBody3D
     public float Gravity = 30.0f;
     
     [Export]
-    public float MouseSensitivity = 0.005f;
+    public float HorizontalMouseSensitivity = 0.005f;
     
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
     private bool isJumping = false;
+    [Export]
+    public RayCast3D CameraRay;
     
     #region Engine Functions
     public override void _Ready()
     {
         // Hide cursor and lock it
         Input.MouseMode = Input.MouseModeEnum.Captured;
+        if (CameraRay == null)
+        {
+            GD.Print("no cam ray");
+        }
+        else
+        {
+            GD.Print("cam ray");
+        }
     }
     public override void _Input(InputEvent @event)
     {
         if (@event is InputEventMouseMotion mouseMotion)
         {
             HandleRotation(mouseMotion);
+        }
+        if(@event.IsActionPressed("interact"))
+        {
+            HandleInteract();
         }
     }
 
@@ -47,7 +62,7 @@ public partial class PlayerController : CharacterBody3D
     #region Motion Functions
     private void HandleRotation(InputEventMouseMotion mouseMotion)
     {
-        rotationY -= mouseMotion.Relative.X * MouseSensitivity;
+        rotationY -= mouseMotion.Relative.X * HorizontalMouseSensitivity;
         
         // Apply rotation to the player
         Rotation = new Vector3(0, rotationY, 0);
@@ -104,4 +119,15 @@ public partial class PlayerController : CharacterBody3D
         return newVelocity;
     }
     #endregion Motion Functions
+
+    #region Interaction
+    private void HandleInteract()
+    {
+        if (CameraRay.IsColliding())
+        {
+            Node collider = (Node)CameraRay.GetCollider();
+            GD.Print(collider.Name);
+        }
+    }
+    #endregion Interaction
 }
