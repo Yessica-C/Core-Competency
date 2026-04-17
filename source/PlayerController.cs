@@ -19,8 +19,13 @@ public partial class PlayerController : CharacterBody3D
     private float rotationX = 0.0f;
     private float rotationY = 0.0f;
     private bool isJumping = false;
+    private bool HoldingProp = false;
+    private Prop HeldProp = null;
+
     [Export]
     public RayCast3D CameraRay;
+    [Export]
+    public Marker3D HandPos;
     
     #region Engine Functions
     public override void _Ready()
@@ -123,10 +128,26 @@ public partial class PlayerController : CharacterBody3D
     #region Interaction
     private void HandleInteract()
     {
-        if (CameraRay.IsColliding())
+        if(HoldingProp)
         {
-            Node collider = (Node)CameraRay.GetCollider();
-            GD.Print(collider.Name);
+            HeldProp.Drop();
+            HoldingProp = false;
+            HeldProp = null;
+        }
+        else if (!HoldingProp)
+        {
+            if (CameraRay.IsColliding())
+            {
+                Object collider = CameraRay.GetCollider();
+                if (collider is Prop)
+                {
+                    HoldingProp = true;
+                    HeldProp = (Prop)CameraRay.GetCollider();
+                    HeldProp.PickUp();
+                    HeldProp.SlideTo(HandPos.GlobalPosition);
+                    HeldProp.Reparent(HandPos);
+                }
+            }
         }
     }
     #endregion Interaction

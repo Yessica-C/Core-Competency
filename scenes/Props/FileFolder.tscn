@@ -8,7 +8,6 @@ size = Vector3(0.3, 0.05, 0.24)
 
 [node name="FileFolder" type="RigidBody3D" unique_id=1163095980]
 mass = 0.1
-can_sleep = false
 script = ExtResource("1_54re5")
 metadata/_custom_type_script = "uid://cuawrisbaf6ca"
 

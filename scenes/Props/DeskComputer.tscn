@@ -12,7 +12,6 @@ size = Vector3(0.4, 0.45, 0.31)
 
 [node name="DeskComputer" type="RigidBody3D" unique_id=1448580718]
 mass = 15.0
-can_sleep = false
 script = ExtResource("1_ycc6b")
 metadata/_custom_type_script = "uid://cuawrisbaf6ca"
 

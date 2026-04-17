@@ -6,12 +6,13 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_rpqav"]
 height = 1.8
 
-[node name="Player" type="CharacterBody3D" unique_id=364632306 node_paths=PackedStringArray("CameraRay")]
+[node name="Player" type="CharacterBody3D" unique_id=364632306 node_paths=PackedStringArray("CameraRay", "HandPos")]
 script = ExtResource("1_rpqav")
 Speed = 3.0
 JumpForce = 5.0
 Gravity = 20.0
 CameraRay = NodePath("CameraVerticalGimble/RayCast3D")
+HandPos = NodePath("CameraVerticalGimble/PickupPoint")
 
 [node name="PlayerCollisionShape" type="CollisionShape3D" parent="." unique_id=1218767311]
 shape = SubResource("CylinderShape3D_rpqav")
@@ -27,3 +28,6 @@ current = true
 [node name="RayCast3D" type="RayCast3D" parent="CameraVerticalGimble" unique_id=423312425]
 transform = Transform3D(1, 0, 0, 0, 0.99999994, 0, 0, 0, 0.99999994, 0, 0, 0)
 target_position = Vector3(0, 0, -2)
+
+[node name="PickupPoint" type="Marker3D" parent="CameraVerticalGimble" unique_id=881439198]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.41651565, -0.18291754, -0.73548925)
