@@ -143,9 +143,7 @@ public partial class PlayerController : CharacterBody3D
                 {
                     HoldingProp = true;
                     HeldProp = (Prop)CameraRay.GetCollider();
-                    HeldProp.PickUp();
-                    HeldProp.SlideTo(HandPos.GlobalPosition);
-                    HeldProp.Reparent(HandPos);
+                    HeldProp.PickUp(HandPos);
                 }
             }
         }

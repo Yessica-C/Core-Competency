@@ -8,12 +8,14 @@ public partial class Prop : RigidBody3D
     private Vector3 TargetPos;
     private bool Held = false;
     private Node OldParent;
-    public void PickUp()
+    public void PickUp(Node3D NewHolder)
     {
         Held = true;
         Freeze = true;
         OldParent = GetParent();
         DisableHitboxes();
+        Reparent(NewHolder);
+        SlideTo(NewHolder.GlobalPosition);
     }
 
     public void SlideTo(Vector3 Destination)

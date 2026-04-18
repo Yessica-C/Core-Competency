@@ -6,8 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://bc6o6wlxvsogu" path="res://scenes/Props/FileFolder.tscn" id="2_v1gob"]
 [ext_resource type="PackedScene" uid="uid://dm4aaa4ra64jo" path="res://scenes/Props/DeskComputer.tscn" id="3_jw32o"]
 [ext_resource type="PackedScene" uid="uid://dgr3rxwc0y2qo" path="res://scenes/Props/PottedPlant.tscn" id="4_5hndv"]
+[ext_resource type="PackedScene" uid="uid://d01wxwsvcnprv" path="res://scenes/Levels/GreyboxOffice.tscn" id="6_aqkff"]
 [ext_resource type="Script" uid="uid://rn7q02qmorob" path="res://source/TriggerHandler.cs" id="6_foyy6"]
-[ext_resource type="PackedScene" uid="uid://bd1s2b8tw5opr" path="res://scenes/Control/AreaTrigger.tscn" id="6_vkos4"]
 [ext_resource type="Texture2D" uid="uid://cgykydwamkhm4" path="res://resources/Icons/Crosshair.png" id="9_aqkff"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8jgs"]
@@ -26,11 +26,43 @@ volumetric_fog_enabled = true
 
 [sub_resource type="Compositor" id="Compositor_stoa7"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_idj7w"]
-size = Vector3(10, 0.1, 10)
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqkff"]
+albedo_color = Color(1, 0, 0, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_5hndv"]
-size = Vector3(10, 10, 0.1)
+[sub_resource type="TorusMesh" id="TorusMesh_stoa7"]
+material = SubResource("StandardMaterial3D_aqkff")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuobu"]
+albedo_color = Color(0, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_rus8l"]
+material = SubResource("StandardMaterial3D_vuobu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gbkq"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_pnstf"]
+material = SubResource("StandardMaterial3D_4gbkq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ifjly"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_kxdq8"]
+material = SubResource("StandardMaterial3D_ifjly")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ebnv"]
+albedo_color = Color(1, 0, 1, 1)
+subsurf_scatter_strength = 0.26
+stencil_flags = 2
+
+[sub_resource type="TorusMesh" id="TorusMesh_1uq8n"]
+material = SubResource("StandardMaterial3D_7ebnv")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kxh1"]
+albedo_color = Color(1, 1, 0, 1)
+
+[sub_resource type="TorusMesh" id="TorusMesh_x8jgs"]
+material = SubResource("StandardMaterial3D_5kxh1")
 
 [node name="Game" type="Node" unique_id=1287510675]
 
@@ -38,9 +70,6 @@ size = Vector3(10, 10, 0.1)
 
 [node name="Triggers" type="Node" parent="Level" unique_id=758420668]
 script = ExtResource("6_foyy6")
-
-[node name="RightOfDeskAreaTrigger" parent="Level/Triggers" unique_id=434507235 instance=ExtResource("6_vkos4")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.0361266, 1.1945306, -2.0129943)
 
 [node name="Lighting" type="WorldEnvironment" parent="Level" unique_id=731120111]
 environment = SubResource("Environment_5hndv")
@@ -53,7 +82,7 @@ light_volumetric_fog_energy = 0.0
 shadow_enabled = true
 
 [node name="RedDeskLight" type="SpotLight3D" parent="Level/Lighting" unique_id=354621731]
-transform = Transform3D(1, 0, 0, 0, -0.4802235, 0.8771462, 0, -0.8771462, -0.4802235, 0, 3.2952552, -3.4180858)
+transform = Transform3D(1, 0, 0, 0, 0.28066674, 0.9598053, 0, -0.9598053, 0.28066674, -1.2401056, 4.237959, 22.594412)
 light_color = Color(1, 0, 0, 1)
 light_energy = 2.0
 light_indirect_energy = 0.0
@@ -64,29 +93,45 @@ spot_angle = 32.97
 
 [node name="Statics" type="Node" parent="Level" unique_id=2068773212]
 
-[node name="Floor" type="StaticBody3D" parent="Level/Statics" unique_id=313938639]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.099999964, 0)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Level/Statics/Floor" unique_id=714989940]
-shape = SubResource("BoxShape3D_idj7w")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Level/Statics/Floor" unique_id=1049692436]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 0, 0)
-mesh = SubResource("BoxMesh_5hndv")
-
 [node name="ExecutiveDesk" parent="Level/Statics" unique_id=1119628824 instance=ExtResource("1_pbw6q")]
-transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, -1.9087193)
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.33564433, 0, -2.1942866)
+
+[node name="Red" type="MeshInstance3D" parent="Level/Statics" unique_id=885155564]
+transform = Transform3D(-0.97046435, -0.1262688, -0.20556037, 0.24124442, -0.50794685, -0.82691664, 1.4264495e-08, -0.85208344, 0.52340597, 2.9895782, 1.7516992, 4.0209146)
+mesh = SubResource("TorusMesh_stoa7")
+
+[node name="Green" type="MeshInstance3D" parent="Level/Statics" unique_id=1390914294]
+transform = Transform3D(-0.069142275, -0.8719671, 0.48465747, -0.5393786, 0.44136333, 0.7171258, -0.83922, -0.21183018, -0.50083727, 1.0569755, 1.567919, 4.5067234)
+mesh = SubResource("TorusMesh_rus8l")
+
+[node name="Blue" type="MeshInstance3D" parent="Level/Statics" unique_id=477378496]
+transform = Transform3D(-0.7484327, 0.61230195, 0.25482288, 0.65285474, 0.6125579, 0.44559345, 0.11674399, 0.49985895, -0.8582025, -0.50414765, 1.7516992, 4.743975)
+mesh = SubResource("TorusMesh_pnstf")
+
+[node name="Cyan" type="MeshInstance3D" parent="Level/Statics" unique_id=966241093]
+transform = Transform3D(-0.2891822, 0.50104296, 0.8156774, -0.86754256, -0.49735862, -0.0020593554, 0.40465236, -0.70823044, 0.5785034, 1.7394117, 0.9757533, 2.7439969)
+mesh = SubResource("TorusMesh_kxdq8")
+
+[node name="Magenta" type="MeshInstance3D" parent="Level/Statics" unique_id=965279236]
+transform = Transform3D(-0.15715127, -0.53702664, 0.8287978, -0.24454264, 0.83425057, 0.49419123, -0.9568189, -0.12501365, -0.2624294, 0.073206425, 0.6796298, 3.443333)
+mesh = SubResource("TorusMesh_1uq8n")
+
+[node name="Yellow" type="MeshInstance3D" parent="Level/Statics" unique_id=810596161]
+transform = Transform3D(0.7205832, -0.6321862, 0.2847814, 0.098294735, -0.31343475, -0.9445089, 0.6863661, 0.70858973, -0.1637153, -1.7185696, 1.1175833, 3.706592)
+mesh = SubResource("TorusMesh_x8jgs")
 
 [node name="Props" type="Node" parent="Level" unique_id=1614521393]
 
 [node name="FileFolder" parent="Level/Props" unique_id=335447311 instance=ExtResource("2_v1gob")]
-transform = Transform3D(0.955793, 0, -0.29404032, 0, 1, 0, 0.29404032, 0, 0.955793, 0.5055795, 0.7804945, -1.9152145)
+transform = Transform3D(0.955793, 0, -0.29404032, 0, 1, 0, 0.29404032, 0, 0.955793, 0.84122384, 0.7804945, -2.2007818)
 
 [node name="DeskComputer" parent="Level/Props" unique_id=1158682513 instance=ExtResource("3_jw32o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033804387, 0.80264884, -1.8847028)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30183995, 0.80264884, -2.17027)
 
 [node name="PottedPlant" parent="Level/Props" unique_id=1079158969 instance=ExtResource("4_5hndv")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.4219671, 0.033708274, -2.0121403)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0863228, 0.033708274, -2.2977076)
+
+[node name="GreyboxOffice" parent="Level" unique_id=1448307601 instance=ExtResource("6_aqkff")]
 
 [node name="PlayerController" parent="." unique_id=1859647037 instance=ExtResource("1_r150o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
@@ -107,5 +152,3 @@ offset_bottom = 20.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_aqkff")
-
-[connection signal="body_entered" from="Level/Triggers/RightOfDeskAreaTrigger" to="Level/Triggers" method="ReceivePlayerTrigger"]
