@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo7v2m8p7m3qu"
-path.s3tc="res://.godot/imported/texture_02.png-a6ef50dc995a3118bf0d13c196180b4c.s3tc.ctex"
+uid="uid://bwq150if1i1i8"
+path.s3tc="res://.godot/imported/flat_Lshape_0.png-5a866afe3d0a0e3f6c36f7c653d2266b.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "163f4227a303fc3d8fe14b81976fe629"
+}
 
 [deps]
 
-source_file="res://resources/PrototypeTextures/Dark/texture_02.png"
-dest_files=["res://.godot/imported/texture_02.png-a6ef50dc995a3118bf0d13c196180b4c.s3tc.ctex"]
+source_file="res://resources/Sounds/flat_Lshape_0.png"
+dest_files=["res://.godot/imported/flat_Lshape_0.png-5a866afe3d0a0e3f6c36f7c653d2266b.s3tc.ctex"]
 
 [params]
 

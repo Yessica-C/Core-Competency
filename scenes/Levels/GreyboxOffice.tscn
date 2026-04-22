@@ -2,13 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://odpfsx2pw0yg" path="res://resources/PrototypeTextures/Dark/texture_01.png" id="1_5bh64"]
 [ext_resource type="PackedScene" uid="uid://cxdqjcmmvncjs" path="res://scenes/Levels/GreyboxDoorway.tscn" id="2_mj47d"]
-[ext_resource type="Texture2D" uid="uid://br0w8uk05lmj8" path="res://resources/PrototypeTextures/Light/texture_06.png" id="3_qqana"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4gbkq"]
 size = Vector3(0.25, 3, 3)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kxh1"]
-albedo_texture = ExtResource("1_5bh64")
 uv1_scale = Vector3(12, 1, 12)
 
 [sub_resource type="BoxMesh" id="BoxMesh_x8jgs"]
@@ -64,12 +62,7 @@ size = Vector3(0.25, 3, 1.6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_idj7w"]
 size = Vector3(14, 0.1, 28)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gbkq"]
-albedo_texture = ExtResource("3_qqana")
-uv1_scale = Vector3(100, 100, 100)
-
 [sub_resource type="BoxMesh" id="BoxMesh_5hndv"]
-material = SubResource("StandardMaterial3D_4gbkq")
 size = Vector3(14, 0.1, 28)
 
 [node name="GreyboxOffice" type="Node" unique_id=1448307601]

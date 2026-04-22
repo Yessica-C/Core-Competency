@@ -1,0 +1,40 @@
+[gd_resource type="VisualShader" format=3 uid="uid://d3tro7h62j8kl"]
+
+[ext_resource type="Texture2D" uid="uid://fqrxh0xp80eb" path="res://resources/Icons/Linear_RGB_color_wheel.png" id="1_vajxh"]
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_8skxj"]
+expanded_output_ports = [0]
+source = 1
+texture = ExtResource("1_vajxh")
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_h0ftu"]
+output_port_for_preview = 0
+default_input_values = [0, Vector3(0, 0, 0), 1, Vector3(0.213, 0.715, 0.072)]
+expanded_output_ports = [0]
+operator = 2
+
+[sub_resource type="VisualShaderNodeIf" id="VisualShaderNodeIf_ki4gn"]
+output_port_for_preview = 0
+default_input_values = [0, 0.0, 1, 0.48, 2, 0.4, 3, Vector3(0.4, 0.4, 0.4), 4, Vector3(0.8, 0.8, 0.8), 5, Vector3(0, 0, 0)]
+
+[sub_resource type="VisualShaderNodeExpression" id="VisualShaderNodeExpression_0orsq"]
+size = Vector2(480.00006, 300)
+expression = "out = in.r + in.g + in.b;"
+
+[resource]
+stencil/enabled = true
+nodes/vertex/0/position = Vector2(580, 80)
+nodes/fragment/0/position = Vector2(300, -380)
+nodes/fragment/13/node = SubResource("VisualShaderNodeTexture_8skxj")
+nodes/fragment/13/position = Vector2(-1380, -220)
+nodes/fragment/20/node = SubResource("VisualShaderNodeVectorOp_h0ftu")
+nodes/fragment/20/position = Vector2(-1000, -300)
+nodes/fragment/23/node = SubResource("VisualShaderNodeIf_ki4gn")
+nodes/fragment/23/position = Vector2(20, -240)
+nodes/fragment/30/node = SubResource("VisualShaderNodeExpression_0orsq")
+nodes/fragment/30/position = Vector2(-620, -220)
+nodes/fragment/30/size = Vector2(480.00006, 300)
+nodes/fragment/30/input_ports = "0,4,in;"
+nodes/fragment/30/output_ports = "0,0,out;"
+nodes/fragment/30/expression = "out = in.r + in.g + in.b;"
+nodes/fragment/connections = PackedInt32Array(23, 0, 0, 0, 13, 0, 20, 0, 30, 0, 23, 0, 20, 0, 30, 0)

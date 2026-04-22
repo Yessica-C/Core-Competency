@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bo7v2m8p7m3qu"
-path.s3tc="res://.godot/imported/texture_02.png-a6ef50dc995a3118bf0d13c196180b4c.s3tc.ctex"
+uid="uid://bu7meuu7esagc"
+path.s3tc="res://.godot/imported/bluenoiselg.png-a32783dd91ce094a5c42563e4f1b1742.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/PrototypeTextures/Dark/texture_02.png"
-dest_files=["res://.godot/imported/texture_02.png-a6ef50dc995a3118bf0d13c196180b4c.s3tc.ctex"]
+source_file="res://resources/Icons/bluenoiselg.png"
+dest_files=["res://.godot/imported/bluenoiselg.png-a32783dd91ce094a5c42563e4f1b1742.s3tc.ctex"]
 
 [params]
 

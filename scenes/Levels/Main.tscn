@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://qvjqqpj5g5hf"]
+[gd_scene format=4 uid="uid://qvjqqpj5g5hf"]
 
 [ext_resource type="PackedScene" uid="uid://b6vrrqcutydeg" path="res://scenes/Furniture/ExecutiveDesk.tscn" id="1_pbw6q"]
 [ext_resource type="PackedScene" uid="uid://brrgtb4d6hwi8" path="res://scenes/Control/Player.tscn" id="1_r150o"]
@@ -6,9 +6,19 @@
 [ext_resource type="PackedScene" uid="uid://bc6o6wlxvsogu" path="res://scenes/Props/FileFolder.tscn" id="2_v1gob"]
 [ext_resource type="PackedScene" uid="uid://dm4aaa4ra64jo" path="res://scenes/Props/DeskComputer.tscn" id="3_jw32o"]
 [ext_resource type="PackedScene" uid="uid://dgr3rxwc0y2qo" path="res://scenes/Props/PottedPlant.tscn" id="4_5hndv"]
+[ext_resource type="Texture2D" uid="uid://fqrxh0xp80eb" path="res://resources/Icons/Linear_RGB_color_wheel.png" id="4_5kxh1"]
+[ext_resource type="Texture2D" uid="uid://c4ut7a1hy8utn" path="res://resources/Icons/ggb.jpg" id="4_pnstf"]
 [ext_resource type="PackedScene" uid="uid://d01wxwsvcnprv" path="res://scenes/Levels/GreyboxOffice.tscn" id="6_aqkff"]
 [ext_resource type="Script" uid="uid://rn7q02qmorob" path="res://source/TriggerHandler.cs" id="6_foyy6"]
+[ext_resource type="Shader" uid="uid://xvkhftx0iva" path="res://resources/Shaders/Sobel.gdshader" id="9_5kxh1"]
 [ext_resource type="Texture2D" uid="uid://cgykydwamkhm4" path="res://resources/Icons/Crosshair.png" id="9_aqkff"]
+[ext_resource type="PackedScene" uid="uid://d0h2u8mk4br1j" path="res://resources/Sounds/flat_Lshape.fbx" id="11_4gbkq"]
+[ext_resource type="Script" uid="uid://dp7ifbmisl8o1" path="res://source/ChaserCamera.cs" id="14_ifjly"]
+[ext_resource type="Shader" uid="uid://fnf23wssccpo" path="res://resources/Shaders/SphereSampler1.gdshader" id="14_x8jgs"]
+[ext_resource type="Texture2D" uid="uid://dhschc0gldsv5" path="res://resources/Models/textures/Icosphere Base Color.png" id="15_7ebnv"]
+[ext_resource type="Texture2D" uid="uid://bu7meuu7esagc" path="res://resources/Icons/bluenoiselg.png" id="15_kxdq8"]
+[ext_resource type="Script" uid="uid://de8d16rqjeqdq" path="res://source/ShaderSphere.cs" id="16_7ebnv"]
+[ext_resource type="Script" uid="uid://bt2d0oofm2qk5" path="res://source/SphereShaderLoadScript.cs" id="18_kxdq8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8jgs"]
 sky_top_color = Color(1, 1, 1, 1)
@@ -18,9 +28,14 @@ sky_horizon_color = Color(5.7756904e-07, 0.74489707, 0.7712593, 1)
 sky_material = SubResource("ProceduralSkyMaterial_x8jgs")
 
 [sub_resource type="Environment" id="Environment_5hndv"]
-background_mode = 2
+background_mode = 1
 sky = SubResource("Sky_vuobu")
-volumetric_fog_enabled = true
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+ssao_enabled = true
+ssao_intensity = 1.0
+fog_light_energy = 0.0
+fog_sun_scatter = 0.1
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_aqkff"]
 
@@ -51,6 +66,7 @@ albedo_color = Color(0, 1, 1, 1)
 material = SubResource("StandardMaterial3D_ifjly")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7ebnv"]
+render_priority = -3
 albedo_color = Color(1, 0, 1, 1)
 subsurf_scatter_strength = 0.26
 stencil_flags = 2
@@ -59,12 +75,151 @@ stencil_flags = 2
 material = SubResource("StandardMaterial3D_7ebnv")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kxh1"]
+render_priority = 3
 albedo_color = Color(1, 1, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_x8jgs"]
 material = SubResource("StandardMaterial3D_5kxh1")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pnstf"]
+albedo_texture = ExtResource("4_pnstf")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_5kxh1"]
+lightmap_size_hint = Vector2i(22, 12)
+material = SubResource("StandardMaterial3D_pnstf")
+size = Vector2(4, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x8jgs"]
+albedo_texture = ExtResource("4_5kxh1")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vuobu"]
+lightmap_size_hint = Vector2i(22, 12)
+material = SubResource("StandardMaterial3D_x8jgs")
+size = Vector2(4, 4)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5kxh1"]
+render_priority = 0
+shader = ExtResource("9_5kxh1")
+shader_parameter/min_step = 0.4
+shader_parameter/max_step = 0.6
+shader_parameter/gamma = 2.2
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_5kxh1"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_5kxh1")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn87n"]
+resource_name = "Material.001"
+cull_mode = 2
+albedo_texture = ExtResource("15_7ebnv")
+roughness = 0.5
+metadata/extras = {
+"yp": {
+"active_ypaint_node": "",
+"expand_content": 0.0
+}
+}
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_vx2ar"]
+_surfaces = [{
+"aabb": AABB(-0.95105785, -1, -0.99999994, 1.9021157, 2, 1.9999999),
+"format": 34896613377,
+"index_count": 240,
+"index_data": PackedByteArray("BQANABYABQAMAA0AFgAPAAUABQAOAAwABQAPAA4AFwAPABYADgAYAAwADAAZAA0ADwAaAA4ADAAYAAcADAAHABkADgAEABgADgAaAAQADwAAABoAFwAAAA8AGgAbAAQABAAcABgABAAbABwAHQAbABoAAAAdABoAFwARAAAAAAARAB0AHAAeABgAGAAeAAcAGwAfABwAHQALABsAGwALAB8AHQAgAAsAEQAgAB0ACwAhAB8AIAAhAAsAHAAfAAYAHAAGAB4AIQAUAB8AHwAUAAYAEgAhACAAEQABACAAAQASACAAIgABABEAIgARABcAIwASAAEAIgAjAAEAEgACACEAIQACABQAAwAiABcAAwAXABYAJAAjACIAAwAkACIAEwASACMAEwACABIAFgAlAAMAJQAkAAMADQAlABYAJAAKACMACgATACMAJgAkACUAJgAKACQADQAIACUACAAmACUADQAZAAgAJgAnAAoAJwATAAoACAAQACYAEAAnACYAGQAQAAgAFQATACcAFQACABMAFAACABUACQAVACcAEAAJACcAFAAVACgAKAAVAAkABgAUACgAHgAGACgAKQAQABkAKQAJABAAKQAoAAkAHgAoACkABwApABkABwAeACkA"),
+"lods": [0.2509648, PackedByteArray("BQAMAA0ADAAHAA0ADQAIAAUADQAHAAgABQAOAAwABQAPAA4ADgAEAAwADAAEAAcADwAAAA4ADgAAAAQAAwAPAAUABQAIAAMAAwAAAA8ABwAQAAgAAwARAAAABwAJABAAEAAJAAgAAwABABEAEQABAAAACAAKAAMACAAJAAoAAwAKAAEACgASAAEAAAABAAsAAAALAAQAEgACAAEAAQACAAsAEwASAAoAEwACABIACQATAAoAAgAUAAsAFQACABMAFAACABUAFQATAAkACwAUAAYAFAAVAAYABAALAAYABgAVAAkABAAGAAcABwAGAAkA"), 0.3764472, PackedByteArray("BQAHAAgABwAJAAgABQAIAAMACAAJAAoACAAKAAMACQACAAoAAwAKAAEACgACAAEAAwAAAAUAAwABAAAABQAEAAcABQAAAAQABwAGAAkAAgAJAAYABAAGAAcAAQACAAsAAAABAAsACwACAAYAAAALAAQABAALAAYA"), 1.3818928, PackedByteArray("AAABAAIAAwABAAAAAwACAAEAAAACAAQAAwAAAAUABQACAAMABQAAAAQABAACAAYABQAGAAIABAAGAAUA")],
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 42,
+"vertex_data": PackedByteArray("YuHBRrQ8AABf+D25/38AAP9/////fwAAYuHBRkrDAADMWsFGHRMAAP9/AAD/fwAAnB49ubQ8AACfB8FG/38AAMxawUbh7AAAnB49uUrDAAAypT254ewAADKlPbkdEwAAPjkdE/9/AAAiah0T/78AACJqHRP/PwAAPbkdE3FYAADkMP9/jOcAAP///39xWAAAwMbh7P9/AADcleHs/78AAMFG4exxWAAAwUbh7I2nAAA9uR0TjacAAHvytDz/fwAAYCO0PP8/AABgI7Q8/78AAGCjtDxyGAAA/3//fwAAAADkMP9/chgAABrP/39yGAAAAAD/f3FYAACeXErDchgAAJ7cSsP/PwAA3JXh7P8/AAD///9/jacAAJ7cSsP/vwAAGs//f4znAABgo7Q8jOcAAP9//3///wAAnlxKw4znAACDDUrD/38AAAAA/3+NpwAA")
+}]
+blend_shape_mode = 0
+
+[sub_resource type="ArrayMesh" id="ArrayMesh_5tp72"]
+resource_name = "BlueNoiseIcoSphere_Icosphere"
+_surfaces = [{
+"aabb": AABB(-0.95105785, -1, -0.99999994, 1.9021157, 2, 1.9999999),
+"attribute_data": PackedByteArray("XHSv1xZdYK9cdBGH0UWv10UXEYeLLv//Fl3//+iir9eii///Lbpgr7no//9z0RGHc9Gv1///r9e56GCvLbr//6KLYK/oohGHiy5gr9FFEYdFF6/XAABgrxbd1+tc9NfrXPSIwxbdOZvQxTmb0MXX64qu1+uKrjmbRZfX6/9/1+u5aDmbuWiIw7lo1+t0UTmbLjo5m+gi1+uiC4jD6CI5m6ILOZsuOtfriy6v1+giiMMuOojDRRdgr9FFYK90UYjDFl2v13RR1+tcdGCv/385m/9/iMOii6/XRZeIw+iiYK9Flzmbiq6Iwy26r9fQxYjDc9FgrxbdiMO56K/X"),
+"format": 34896613399,
+"index_count": 240,
+"index_data": PackedByteArray("BQAlACkAJQAqACkAJQAUACoAKQAqAAMAFAArACoAFAAmACsAKgAsAAMAKwAsACoAJgAtACsAJgAVAC0AFQAoAC0AKAAnAC0AKAAEACcALQAnABIAKwAtABIAKwASACwALAASAC4AEgAkAC4AJAAjAC4AJAATACMALgAjAAEALAAuAC8ALwAuAAEAAwAsAC8AAwAvADAAAwAwADEAMAAiADEAMQAiAAYAMAAAACIALwAhADAAMAAhAAAALwABACEAIQABADIAAQAgADIAIAAzADIAIAACADMAMgAzABAAIQAyADQANAAyABAAAAAhADQAAAA0ADUAHwAAADUAHwA1AB4ACAAfAB4AHgA1AAcANAA2ADUANQA2AAcANAAQADYANgAQADcAEAA4ADcAOAAdADcAOAARAB0ANwAdAAkANgA3ADkAOQA3AAkABwA2ADkABwA5ADoAHAAHADoAHAA6ABsADwAcABsAGwA6AAwAOQA7ADoAOgA7AAwAOQAJADsAOwAJADwACQAaADwAGgAZADwAGgALABkAPAAZAA4AOwA8AD0APQA8AA4ADAA7AD0APQAOABgADAA9AD4APQAYAD4APgAYAA0AFgAMAD4AFwA+AA0AFgA+ABcACgAWABcA"),
+"lods": [0.2509648, PackedByteArray("CgAWABcAFgAMABcAFwAMAA0ADAAYAA0ADAAOABgADAAJAA4ACQAZAA4AGgAZAAkAGgALABkABwAJAAwAGwAHAAwAHAAHABsADwAcABsABwAQAAkAEAAdAAkAEQAdABAAAAAQAAcAHgAAAAcACAAfAB4AHwAAAB4AAAABABAAAQACABAAIAACAAEAIQABAAAAAwAhAAAAAwABACEAAwAAACIAAwAiAAYAAwASAAEAEgAjAAEAJAAjABIAJAATACMAFAASAAMABQAUAAMAJQAUAAUAFAAVABIAJgAVABQAFQAnABIAKAAnABUAKAAEACcA"), 0.3764472, PackedByteArray("CgAMAA0ADAAOAA0ADAAJAA4ACwAOAAkABwAJAAwADwAHAAwABwAQAAkAEAARAAkAAAAQAAcACAAAAAcAAAABABAAAQACABAAAwABAAAAAwAAAAYAAwASAAEAEgATAAEAFAASAAMABQAUAAMAFAAVABIAFQAEABIA"), 1.3818928, PackedByteArray("AAABAAIAAwABAAAAAwAEAAEABQAEAAMAAwAAAAYAAAACAAcACAAAAAcABwACAAkABwAJAAoACgAJAAsA")],
+"material": SubResource("StandardMaterial3D_jn87n"),
+"name": "Material.001",
+"primitive": 3,
+"uv_scale": Vector4(0, 0, 0, 0),
+"vertex_count": 63,
+"vertex_data": PackedByteArray("YuHBRrQ8tNpf+D25/38mwv9/////f13lYuHBRkrDeqr/f////3/+wP9/AAD/f/7A/38AAP9/VNXMWsFGHROK8/9/AAD/f/b2nB49ubQ8tNr/fwAA/390yP9/////f1TVnwfBRv9/JsLMWsFG4exxm5wePblKw/qs/38AAP9/XeUypT25HROK8/9/////f/b2MqU9ueHswJb/f////390yMxawUbh7DKXnB49uUrDi6k+OR0T/3+YwiJqHRP/vziy5DD/f4znqpnBRuHsjacLwcFG4exxWAXWPjkdE/9/PdQiah0T/z8q68FG4exxWEnpImodE/8/C/89uR0TcVhJ6cDG4ez/fz3U////f3FY0Mw9uR0TcVgF1sDG4ez/f5jC3JXh7P+/OLIiah0T/7+NrOQw/3+M56qZ3JXh7P+/jazBRuHsjac6sz25HRONpzqzYKO0PIzn2Zn/f/9////ngRrP/3+M56qZnlxKw4zn2Zme3ErD/78YrP///3+Npzqze/K0PP9/CsM9uR0TjacLwZ7cSsP/Pyvb3JXh7P8/Kusaz/9/chhn5mCjtDxyGK/z/3//fwAA//+eXErDchiv89yV4ez/Pwv/5DD/f3IYZ+ZgI7Q8/z8r2wAA/39xWNDMgw1Kw/9/CsMAAP9/jac6s2AjtDz/vxispXSgIQyphhT9zPwZGV2tNDThZI/KHppwVFVUVYNkPfybdrFEWYte3k0gmcCqqqqq8lZ465YpLdPGmJTIATMC5nubwQNjiU27DdH4RbHfZT/EOKCl67b4zpI39so4IVPHJ4tC/ZKhlLOtpJK+00AU7/BD2efLgdfM77bO8zN+JzMrv+oQBnvhAlFbbEFsyAg1xt6rOC4eSYIni0L90OG1fbzRSKtCLrZUZzVoVv9//3/XdLwCl8qWqX26vybWgr8Gz2hfLmxeakxppvcMDrwlGOeC2QOqe7Af7YIR/VSETuAPSTAMF30l/JVZB/P4hB39L5ef0Sh9P/mBRT/Z")
+}]
+blend_shape_mode = 0
+shadow_mesh = SubResource("ArrayMesh_vx2ar")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5m6u"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("15_kxdq8")
+texture_filter = 2
+point_size = 92.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_16e68"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(8, 5)
+material = SubResource("StandardMaterial3D_k5m6u")
+flip_faces = true
+radius = 0.2
+height = 0.4
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kxdq8"]
+viewport_path = NodePath("Shaders/SphereViewPort")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0k3tw"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("14_x8jgs")
+shader_parameter/sphere_noise = SubResource("ViewportTexture_kxdq8")
+shader_parameter/min_step = 0.4
+shader_parameter/max_step = 0.6
+shader_parameter/gamma = 2.999999932944
+shader_parameter/brightness = 1.0
+shader_parameter/contrast = 1.0
+shader_parameter/saturation = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_al0fu"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_0k3tw")
+flip_faces = true
+size = Vector2(2, 2)
+
 [node name="Game" type="Node" unique_id=1287510675]
+
+[node name="Player" parent="." unique_id=364632306 instance=ExtResource("1_r150o")]
+
+[node name="PickupPoint" parent="Player/CameraVerticalGimble" parent_id_path=PackedInt32Array(364632306, 116543524) index="2" unique_id=881439198]
+visible = true
+
+[node name="UserInterface" parent="." unique_id=404259883 instance=ExtResource("2_idj7w")]
+
+[node name="Crosshair" type="TextureRect" parent="UserInterface" unique_id=1633915231]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_aqkff")
 
 [node name="Level" type="Node3D" parent="." unique_id=1811819507]
 
@@ -76,25 +231,85 @@ environment = SubResource("Environment_5hndv")
 camera_attributes = SubResource("CameraAttributesPractical_aqkff")
 compositor = SubResource("Compositor_stoa7")
 
-[node name="Sunlight" type="DirectionalLight3D" parent="Level/Lighting" unique_id=382020299]
-transform = Transform3D(1, 0, 0, 0, 0.6955994, 0.71842986, 0, -0.71842986, 0.6955994, 0, 47.68325, 107.16201)
-light_volumetric_fog_energy = 0.0
-shadow_enabled = true
-
 [node name="RedDeskLight" type="SpotLight3D" parent="Level/Lighting" unique_id=354621731]
 transform = Transform3D(1, 0, 0, 0, 0.28066674, 0.9598053, 0, -0.9598053, 0.28066674, -1.2401056, 4.237959, 22.594412)
 light_color = Color(1, 0, 0, 1)
-light_energy = 2.0
+light_energy = 4.139
 light_indirect_energy = 0.0
+light_volumetric_fog_energy = 7.857
 shadow_enabled = true
 spot_range = 6.095
 spot_attenuation = 0.6
 spot_angle = 32.97
 
+[node name="LeftDesk" type="SpotLight3D" parent="Level/Lighting" unique_id=515059751]
+transform = Transform3D(1, 0, 0, 0, 0.3040164, 0.9526668, 0, -0.9526668, 0.3040164, -2.7252548, 4.4175825, -0.44259143)
+light_energy = 4.99
+light_indirect_energy = 0.683
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 10.035
+spot_angle = 23.44
+
+[node name="LeftDesk2" type="SpotLight3D" parent="Level/Lighting" unique_id=285317187]
+transform = Transform3D(0.99999994, 0, 0, 0, -4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, 0, 4.418, -1.958)
+light_energy = 4.99
+light_indirect_energy = 0.683
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 10.035
+spot_angle = 23.44
+
+[node name="SpotLight3D4" type="SpotLight3D" parent="Level/Lighting" unique_id=786786536]
+transform = Transform3D(0.76604444, 0.43426096, -0.47391272, 0, 0.7372773, 0.67559016, 0.6427876, -0.5175321, 0.5647872, 4.6598487, 4.2758822, 1.4735899)
+layers = 257
+light_energy = 2.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_angle = 26.29
+
+[node name="SpotLight3D6" type="SpotLight3D" parent="Level/Lighting" unique_id=493554781]
+transform = Transform3D(0.68888605, 0.48971474, -0.5344299, 3.6733407e-09, 0.7372773, 0.6755902, 0.7248696, -0.46540475, 0.5079001, 4.179587, 4.2758822, 1.0922983)
+layers = 257
+light_energy = 2.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_angle = 26.29
+
+[node name="SpotLight3D5" type="SpotLight3D" parent="Level/Lighting" unique_id=1208479784]
+transform = Transform3D(0.7660445, 0.43426102, -0.47391275, 0, 0.7372774, 0.6755902, 0.64278764, -0.51753217, 0.56478727, 5.484172, 4.2758822, 2.1039548)
+layers = 257
+light_energy = 2.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_angle = 26.29
+
+[node name="Doughnuts" type="SpotLight3D" parent="Level/Lighting" unique_id=558218709]
+transform = Transform3D(-0.20911545, 0.54992414, -0.8086125, -0.15812983, 0.79699564, 0.58291763, 0.9650211, 0.24976285, -0.07970467, -3.2105017, 4.4175825, 3.0165093)
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 7.716
+spot_attenuation = -0.52
+spot_angle = 25.79
+
+[node name="Building" type="SpotLight3D" parent="Level/Lighting" unique_id=1006371274]
+transform = Transform3D(-0.7723983, -0.48450017, 0.41068304, -0.18465674, 0.78997535, 0.5846715, -0.607703, 0.37576386, -0.6996417, -0.052229166, 4.436062, 6.1059837)
+light_energy = 0.5
+light_indirect_energy = 0.0
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 24.415
+spot_attenuation = -0.52
+spot_angle = 25.79
+
 [node name="Statics" type="Node" parent="Level" unique_id=2068773212]
 
 [node name="ExecutiveDesk" parent="Level/Statics" unique_id=1119628824 instance=ExtResource("1_pbw6q")]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0.33564433, 0, -2.1942866)
+
+[node name="ExecutiveDesk2" parent="Level/Statics" unique_id=159289357 instance=ExtResource("1_pbw6q")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -2.682775, 0, -2.1942866)
 
 [node name="Red" type="MeshInstance3D" parent="Level/Statics" unique_id=885155564]
 transform = Transform3D(-0.97046435, -0.1262688, -0.20556037, 0.24124442, -0.50794685, -0.82691664, 1.4264495e-08, -0.85208344, 0.52340597, 2.9895782, 1.7516992, 4.0209146)
@@ -120,9 +335,24 @@ mesh = SubResource("TorusMesh_1uq8n")
 transform = Transform3D(0.7205832, -0.6321862, 0.2847814, 0.098294735, -0.31343475, -0.9445089, 0.6863661, 0.70858973, -0.1637153, -1.7185696, 1.1175833, 3.706592)
 mesh = SubResource("TorusMesh_x8jgs")
 
+[node name="GGBBig" type="MeshInstance3D" parent="Level/Statics" unique_id=1530718945]
+transform = Transform3D(0.86267024, -0.8626706, 3.7708524e-08, 0, -5.3327902e-08, -1.22, 0.86267036, 0.8626705, -3.770852e-08, 6.63791, 1.2367163, -0.2571404)
+mesh = SubResource("PlaneMesh_5kxh1")
+
+[node name="GGBBig2" type="MeshInstance3D" parent="Level/Statics" unique_id=673730622]
+transform = Transform3D(0.675, -6.5955966e-08, 2.8830266e-15, 0, -2.9505188e-08, -0.675, 6.5955966e-08, 0.675, -2.9505188e-08, 2.9476202, 1.2367163, -0.2571404)
+mesh = SubResource("PlaneMesh_vuobu")
+
+[node name="GGBSmall" type="MeshInstance3D" parent="Level/Statics" unique_id=782074920]
+transform = Transform3D(-0.31466246, -0.31466252, 1.3754334e-08, -1.382117e-22, -1.9451564e-08, -0.44499996, 0.31466252, -0.31466246, 1.3754331e-08, 7.596727, 1.123, 1.9159716)
+mesh = SubResource("PlaneMesh_5kxh1")
+
+[node name="BuildingFlatIShape" parent="Level/Statics" unique_id=212028787 instance=ExtResource("11_4gbkq")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -3.783, 0, 10.370017)
+
 [node name="Props" type="Node" parent="Level" unique_id=1614521393]
 
-[node name="FileFolder" parent="Level/Props" unique_id=335447311 instance=ExtResource("2_v1gob")]
+[node name="FileFolder" parent="Level/Props" unique_id=1163095980 instance=ExtResource("2_v1gob")]
 transform = Transform3D(0.955793, 0, -0.29404032, 0, 1, 0, 0.29404032, 0, 0.955793, 0.84122384, 0.7804945, -2.2007818)
 
 [node name="DeskComputer" parent="Level/Props" unique_id=1158682513 instance=ExtResource("3_jw32o")]
@@ -131,24 +361,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30183995, 0.80264884, -2.17
 [node name="PottedPlant" parent="Level/Props" unique_id=1079158969 instance=ExtResource("4_5hndv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0863228, 0.033708274, -2.2977076)
 
+[node name="FileFolder2" parent="Level/Props" unique_id=1277684431 instance=ExtResource("2_v1gob")]
+transform = Transform3D(0.955793, 0, -0.29404032, 0, 1, 0, 0.29404032, 0, 0.955793, -2.1771955, 0.7804945, -2.2007818)
+
+[node name="DeskComputer2" parent="Level/Props" unique_id=1448580718 instance=ExtResource("3_jw32o")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.7165794, 0.80264884, -2.17027)
+
+[node name="PottedPlant2" parent="Level/Props" unique_id=1636559475 instance=ExtResource("4_5hndv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.104742, 0.033708274, -2.2977076)
+
 [node name="GreyboxOffice" parent="Level" unique_id=1448307601 instance=ExtResource("6_aqkff")]
 
-[node name="PlayerController" parent="." unique_id=1859647037 instance=ExtResource("1_r150o")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+[node name="Shaders" type="Node3D" parent="." unique_id=1358280161]
 
-[node name="UserInterface" parent="." unique_id=404259883 instance=ExtResource("2_idj7w")]
+[node name="Sobel" type="MeshInstance3D" parent="Shaders" unique_id=1723742747]
+visible = false
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_5kxh1")
 
-[node name="TextureRect" type="TextureRect" parent="UserInterface" unique_id=1633915231]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -20.0
-offset_top = -20.0
-offset_right = 20.0
-offset_bottom = 20.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_aqkff")
+[node name="SphereViewPort" type="SubViewport" parent="Shaders" unique_id=630188881]
+own_world_3d = true
+handle_input_locally = false
+canvas_item_default_texture_repeat = 2
+size = Vector2i(720, 405)
+render_target_update_mode = 4
+
+[node name="Camera2" type="Camera3D" parent="Shaders/SphereViewPort" unique_id=822525332 node_paths=PackedStringArray("Target")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+top_level = true
+cull_mask = 1047554
+current = true
+script = ExtResource("14_ifjly")
+Target = NodePath("../../../Player/CameraVerticalGimble/Camera")
+
+[node name="Icosphere" type="MeshInstance3D" parent="Shaders/SphereViewPort" unique_id=1465436171]
+transform = Transform3D(0.215, 0, 0, 0, 0.215, 0, 0, 0, 0.215, 0, 0.5, 0)
+layers = 2
+cast_shadow = 0
+mesh = SubResource("ArrayMesh_5tp72")
+
+[node name="NoiseSphere" type="MeshInstance3D" parent="Shaders/SphereViewPort" unique_id=1412532094]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+layers = 2
+cast_shadow = 0
+mesh = SubResource("SphereMesh_16e68")
+script = ExtResource("16_7ebnv")
+
+[node name="SphereShader" type="MeshInstance3D" parent="Shaders" unique_id=1948967773 node_paths=PackedStringArray("viewport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_al0fu")
+script = ExtResource("18_kxdq8")
+viewport = NodePath("../SphereViewPort")
+
+[editable path="Player"]

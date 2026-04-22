@@ -15,7 +15,7 @@ public partial class Prop : RigidBody3D
         OldParent = GetParent();
         DisableHitboxes();
         Reparent(NewHolder);
-        SlideTo(NewHolder.GlobalPosition);
+        //SlideTo(NewHolder.GlobalPosition);
     }
 
     public void SlideTo(Vector3 Destination)
