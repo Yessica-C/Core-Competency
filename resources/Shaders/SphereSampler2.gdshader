@@ -21,9 +21,10 @@ void fragment()
 	vec2 NoiseUV = UV;
 	NoiseUV.y = 1.0-NoiseUV.y;
 	vec4 noise = texture(sphere_noise, NoiseUV);
-		vec4 input = texture(screen_texture, SCREEN_UV);
+	vec4 input = texture(screen_texture, SCREEN_UV);
 	vec4 normal_rough = texture(normal_rough_texture, SCREEN_UV);
 	vec3 appliedColor = vec3(1.0, 0.85, 0.85);
+	bool outline = false;
 	if((input.r >= (input.g + input.b)) && input.r > 0.25)
 	{
 		appliedColor = vec3(1.0, 0.0, 0.0);
@@ -56,9 +57,10 @@ void fragment()
 	float thresh = 0.3;
 	if(sobel.r > thresh) // if pixel is sobel edge, mark as edge.
 	{
-		ALBEDO = appliedColor;
+		outline = true;
+		//ALBEDO = appliedColor;
 	}
-	else if(sobel.r < thresh)// if pixel is not sobel edge, dither that pixel.
+	//else if(sobel.r < thresh)// if pixel is not sobel edge, dither that pixel.
 	{
         vec4 color = texture(screen_texture, SCREEN_UV, 0.0);
         
@@ -84,6 +86,17 @@ void fragment()
 		if (dithered >= 0.5)//if dither above threshold, apply color
 		{
 			ALBEDO = appliedColor;
+		}
+		if(outline)
+		{
+			if(dithered >= 0.5)
+			{
+				ALBEDO = vec3(0.0, 0.0, 0.0);
+			}
+			else
+			{
+				ALBEDO = appliedColor;
+			}
 		}
 	}
 }

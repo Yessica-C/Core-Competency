@@ -23,7 +23,7 @@ debug_color = Color(0.9596842, 0.76104796, 0, 0.41960785)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 script = ExtResource("2_kyqiw")
 
-[node name="Camera" type="Camera3D" parent="CameraVerticalGimble" unique_id=1781866541]
+[node name="MainCamera" type="Camera3D" parent="CameraVerticalGimble" unique_id=1781866541]
 cull_mask = 1048573
 current = true
 

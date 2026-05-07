@@ -8,9 +8,13 @@ uniform sampler2D normal_rough_texture : hint_normal_roughness_texture;
 uniform float min_step : hint_range(0.0, 1.0, 0.01) = 0.4; // min step for the smoothstep() function
 uniform float max_step : hint_range(0.0, 1.0, 0.01) = 0.6; // max step for the smoothstep() function
 uniform float gamma: hint_range(0.0, 10.0, 0.01) = 2.2;
+
 uniform float brightness = 1.0;
 uniform float contrast = 1.0;
 uniform float saturation = 1.0;
+
+uniform float ditherRange = 0.5;
+
 
 void vertex() {
   POSITION = vec4(VERTEX.xy, 1.0, 1.0);
@@ -21,21 +25,13 @@ void fragment()
 	vec2 NoiseUV = UV;
 	NoiseUV.y = 1.0-NoiseUV.y;
 	vec4 noise = texture(sphere_noise, NoiseUV);
-		vec4 input = texture(screen_texture, SCREEN_UV);
+	vec4 input = texture(screen_texture, SCREEN_UV);
 	vec4 normal_rough = texture(normal_rough_texture, SCREEN_UV);
+	bool outline = false;
+	
 	vec3 appliedColor = vec3(1.0, 0.85, 0.85);
-	if((input.r >= (input.g + input.b)) && input.r > 0.25)
-	{
-		appliedColor = vec3(1.0, 0.0, 0.0);
-	}
-	if((input.g >= (input.r + input.b)) && input.g > 0.25)
-	{
-		appliedColor = vec3(0.2, 1.0, 0.2);
-	}
-	if((input.b >= (input.r + input.g)) && input.b > 0.25)
-	{
-		appliedColor = vec3(0.2, 0.2, 1.0);
-	}
+	
+	
     ivec2 q = ivec2(FRAGCOORD.xy);
     
     // Sample 9 pixels around the center
@@ -56,9 +52,10 @@ void fragment()
 	float thresh = 0.3;
 	if(sobel.r > thresh) // if pixel is sobel edge, mark as edge.
 	{
-		ALBEDO = appliedColor;
+		outline = true;
+		//ALBEDO = appliedColor;
 	}
-	else if(sobel.r < thresh)// if pixel is not sobel edge, dither that pixel.
+	//else if(sobel.r < thresh)// if pixel is not sobel edge, dither that pixel.
 	{
         vec4 color = texture(screen_texture, SCREEN_UV, 0.0);
         
@@ -81,9 +78,20 @@ void fragment()
         // Output the result
         //ALBEDO = vec3(dithered, dithered, dithered);
 		ALBEDO = coloredDither;//dither all pixels
-		if (dithered >= 0.5)//if dither above threshold, apply color
+		if (dithered >= ditherRange)//if dither above threshold, apply color
 		{
 			ALBEDO = appliedColor;
+		}
+		if(outline)
+		{
+			if(dithered >= ditherRange)
+			{
+				ALBEDO = vec3(0.0, 0.0, 0.0);
+			}
+			else
+			{
+				ALBEDO = appliedColor;
+			}
 		}
 	}
 }

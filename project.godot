@@ -66,6 +66,7 @@ interact={
 [layer_names]
 
 3d_render/layer_2="Sphere"
+3d_render/layer_3="RenderedAsRed"
 
 [physics]
 

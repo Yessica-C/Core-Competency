@@ -14,26 +14,24 @@
 [ext_resource type="Texture2D" uid="uid://cgykydwamkhm4" path="res://resources/Icons/Crosshair.png" id="9_aqkff"]
 [ext_resource type="PackedScene" uid="uid://d0h2u8mk4br1j" path="res://resources/Sounds/flat_Lshape.fbx" id="11_4gbkq"]
 [ext_resource type="Script" uid="uid://dp7ifbmisl8o1" path="res://source/ChaserCamera.cs" id="14_ifjly"]
-[ext_resource type="Shader" uid="uid://fnf23wssccpo" path="res://resources/Shaders/SphereSampler1.gdshader" id="14_x8jgs"]
 [ext_resource type="Texture2D" uid="uid://dhschc0gldsv5" path="res://resources/Models/textures/Icosphere Base Color.png" id="15_7ebnv"]
-[ext_resource type="Texture2D" uid="uid://bu7meuu7esagc" path="res://resources/Icons/bluenoiselg.png" id="15_kxdq8"]
-[ext_resource type="Script" uid="uid://de8d16rqjeqdq" path="res://source/ShaderSphere.cs" id="16_7ebnv"]
+[ext_resource type="Script" uid="uid://ccvuintnnitt2" path="res://source/FollowerCamera.cs" id="15_al0fu"]
+[ext_resource type="Shader" uid="uid://7kv50borwtsw" path="res://resources/Shaders/RedDither.gdshader" id="16_1uq8n"]
+[ext_resource type="Shader" uid="uid://cr306a68c7eqp" path="res://resources/Shaders/ColorProcessing1.gdshader" id="16_kxdq8"]
+[ext_resource type="Shader" uid="uid://02fuhkyn442y" path="res://resources/Shaders/SphereSampler3.gdshader" id="18_7ebnv"]
 [ext_resource type="Script" uid="uid://bt2d0oofm2qk5" path="res://source/SphereShaderLoadScript.cs" id="18_kxdq8"]
+[ext_resource type="Shader" uid="uid://boyyexwbvsyka" path="res://resources/Shaders/SphereSampler2.gdshader" id="20_1uq8n"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_x8jgs"]
-sky_top_color = Color(1, 1, 1, 1)
-sky_horizon_color = Color(5.7756904e-07, 0.74489707, 0.7712593, 1)
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_7ebnv"]
 
-[sub_resource type="Sky" id="Sky_vuobu"]
-sky_material = SubResource("ProceduralSkyMaterial_x8jgs")
+[sub_resource type="Sky" id="Sky_1uq8n"]
+sky_material = SubResource("PanoramaSkyMaterial_7ebnv")
 
 [sub_resource type="Environment" id="Environment_5hndv"]
-background_mode = 1
-sky = SubResource("Sky_vuobu")
-ambient_light_source = 3
-ambient_light_color = Color(1, 1, 1, 1)
-ssao_enabled = true
-ssao_intensity = 1.0
+background_energy_multiplier = 0.0
+sky = SubResource("Sky_1uq8n")
+ambient_light_source = 2
+ambient_light_energy = 0.0
 fog_light_energy = 0.0
 fog_sun_scatter = 0.1
 
@@ -42,19 +40,19 @@ fog_sun_scatter = 0.1
 [sub_resource type="Compositor" id="Compositor_stoa7"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_aqkff"]
-albedo_color = Color(1, 0, 0, 1)
+albedo_color = Color(0.735357, 0, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_stoa7"]
 material = SubResource("StandardMaterial3D_aqkff")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuobu"]
-albedo_color = Color(0, 1, 0, 1)
+albedo_color = Color(0, 0.735357, 0, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_rus8l"]
 material = SubResource("StandardMaterial3D_vuobu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4gbkq"]
-albedo_color = Color(0, 0, 1, 1)
+albedo_color = Color(0, 0, 0.71864456, 1)
 
 [sub_resource type="TorusMesh" id="TorusMesh_pnstf"]
 material = SubResource("StandardMaterial3D_4gbkq")
@@ -96,22 +94,6 @@ albedo_texture = ExtResource("4_5kxh1")
 lightmap_size_hint = Vector2i(22, 12)
 material = SubResource("StandardMaterial3D_x8jgs")
 size = Vector2(4, 4)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_5kxh1"]
-render_priority = 0
-shader = ExtResource("9_5kxh1")
-shader_parameter/min_step = 0.4
-shader_parameter/max_step = 0.6
-shader_parameter/gamma = 2.2
-shader_parameter/brightness = 1.0
-shader_parameter/contrast = 1.0
-shader_parameter/saturation = 1.0
-
-[sub_resource type="QuadMesh" id="QuadMesh_5kxh1"]
-lightmap_size_hint = Vector2i(12, 12)
-material = SubResource("ShaderMaterial_5kxh1")
-flip_faces = true
-size = Vector2(2, 2)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jn87n"]
 resource_name = "Material.001"
@@ -159,41 +141,103 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_vx2ar")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k5m6u"]
-resource_local_to_scene = true
-transparency = 1
-shading_mode = 0
-albedo_texture = ExtResource("15_kxdq8")
-texture_filter = 2
-point_size = 92.5
-
-[sub_resource type="SphereMesh" id="SphereMesh_16e68"]
-resource_local_to_scene = true
-lightmap_size_hint = Vector2i(8, 5)
-material = SubResource("StandardMaterial3D_k5m6u")
-flip_faces = true
-radius = 0.2
-height = 0.4
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_kxdq8"]
-viewport_path = NodePath("Shaders/SphereViewPort")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0k3tw"]
-resource_local_to_scene = true
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5kxh1"]
 render_priority = 0
-shader = ExtResource("14_x8jgs")
-shader_parameter/sphere_noise = SubResource("ViewportTexture_kxdq8")
+shader = ExtResource("9_5kxh1")
 shader_parameter/min_step = 0.4
 shader_parameter/max_step = 0.6
-shader_parameter/gamma = 2.999999932944
+shader_parameter/gamma = 2.2
 shader_parameter/brightness = 1.0
 shader_parameter/contrast = 1.0
 shader_parameter/saturation = 1.0
 
+[sub_resource type="QuadMesh" id="QuadMesh_5kxh1"]
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_5kxh1")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_kxdq8"]
+viewport_path = NodePath("Shaders/NoiseSphereViewPort")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_al0fu"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("20_1uq8n")
+shader_parameter/sphere_noise = SubResource("ViewportTexture_kxdq8")
+shader_parameter/min_step = 0.4
+shader_parameter/max_step = 0.6
+shader_parameter/gamma = 0.5499999877064
+shader_parameter/brightness = 0.31
+shader_parameter/contrast = 1.1
+shader_parameter/saturation = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_7ebnv"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_al0fu")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1uq8n"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("18_7ebnv")
+shader_parameter/sphere_noise = SubResource("ViewportTexture_kxdq8")
+shader_parameter/min_step = 0.4
+shader_parameter/max_step = 0.6
+shader_parameter/gamma = 0.5499999877064
+shader_parameter/brightness = 0.31
+shader_parameter/contrast = 1.1
+shader_parameter/saturation = 1.0
+shader_parameter/ditherRange = 0.5
+
 [sub_resource type="QuadMesh" id="QuadMesh_al0fu"]
 resource_local_to_scene = true
 lightmap_size_hint = Vector2i(12, 12)
-material = SubResource("ShaderMaterial_0k3tw")
+material = SubResource("ShaderMaterial_1uq8n")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_1uq8n"]
+viewport_path = NodePath("Shaders/RedItemsViewPort")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8cu04"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("16_1uq8n")
+shader_parameter/sphere_noise = SubResource("ViewportTexture_kxdq8")
+shader_parameter/red_layer = SubResource("ViewportTexture_1uq8n")
+shader_parameter/min_step = 0.4
+shader_parameter/max_step = 0.6
+shader_parameter/gamma = 0.5499999877064
+shader_parameter/brightness = 0.31
+shader_parameter/contrast = 1.1
+shader_parameter/saturation = 1.0
+shader_parameter/ditherRange = 0.5
+
+[sub_resource type="QuadMesh" id="QuadMesh_p1qjh"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_8cu04")
+flip_faces = true
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kxdq8"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("16_kxdq8")
+shader_parameter/redThresh = 0.4
+shader_parameter/greenThresh = 0.3
+shader_parameter/blueThresh = 0.4
+shader_parameter/cyanThresh = 0.2
+shader_parameter/magentaThresh = 0.3
+shader_parameter/yellowThresh = 0.4
+
+[sub_resource type="QuadMesh" id="QuadMesh_1uq8n"]
+resource_local_to_scene = true
+lightmap_size_hint = Vector2i(12, 12)
+material = SubResource("ShaderMaterial_kxdq8")
 flip_faces = true
 size = Vector2(2, 2)
 
@@ -233,7 +277,6 @@ compositor = SubResource("Compositor_stoa7")
 
 [node name="RedDeskLight" type="SpotLight3D" parent="Level/Lighting" unique_id=354621731]
 transform = Transform3D(1, 0, 0, 0, 0.28066674, 0.9598053, 0, -0.9598053, 0.28066674, -1.2401056, 4.237959, 22.594412)
-light_color = Color(1, 0, 0, 1)
 light_energy = 4.139
 light_indirect_energy = 0.0
 light_volumetric_fog_energy = 7.857
@@ -251,8 +294,15 @@ light_specular = 0.0
 spot_range = 10.035
 spot_angle = 23.44
 
-[node name="LeftDesk2" type="SpotLight3D" parent="Level/Lighting" unique_id=285317187]
-transform = Transform3D(0.99999994, 0, 0, 0, -4.371139e-08, 0.99999994, 0, -1, -4.3711385e-08, 0, 4.418, -1.958)
+[node name="LeftDesk2" type="SpotLight3D" parent="Level/Lighting" unique_id=627853737]
+transform = Transform3D(-0.67710245, -0.6456598, 0.35306615, 0.24875636, 0.25071838, 0.9355536, -0.6925695, 0.72129315, -0.009150044, -1.9964516, 5.157905, 1.2782407)
+light_volumetric_fog_energy = 0.0
+light_specular = 0.0
+spot_range = 10.035
+spot_angle = 51.3
+
+[node name="MidDesk" type="SpotLight3D" parent="Level/Lighting" unique_id=285317187]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 6.9408784, -1.4182503)
 light_energy = 4.99
 light_indirect_energy = 0.683
 light_volumetric_fog_energy = 0.0
@@ -316,7 +366,7 @@ transform = Transform3D(-0.97046435, -0.1262688, -0.20556037, 0.24124442, -0.507
 mesh = SubResource("TorusMesh_stoa7")
 
 [node name="Green" type="MeshInstance3D" parent="Level/Statics" unique_id=1390914294]
-transform = Transform3D(-0.069142275, -0.8719671, 0.48465747, -0.5393786, 0.44136333, 0.7171258, -0.83922, -0.21183018, -0.50083727, 1.0569755, 1.567919, 4.5067234)
+transform = Transform3D(-0.06600052, -0.8893592, 0.4524205, -0.52452123, 0.4166339, 0.7424916, -0.84883547, -0.18829942, -0.49398592, 1.0569755, 1.567919, 4.5067234)
 mesh = SubResource("TorusMesh_rus8l")
 
 [node name="Blue" type="MeshInstance3D" parent="Level/Statics" unique_id=477378496]
@@ -333,6 +383,7 @@ mesh = SubResource("TorusMesh_1uq8n")
 
 [node name="Yellow" type="MeshInstance3D" parent="Level/Statics" unique_id=810596161]
 transform = Transform3D(0.7205832, -0.6321862, 0.2847814, 0.098294735, -0.31343475, -0.9445089, 0.6863661, 0.70858973, -0.1637153, -1.7185696, 1.1175833, 3.706592)
+layers = 4
 mesh = SubResource("TorusMesh_x8jgs")
 
 [node name="GGBBig" type="MeshInstance3D" parent="Level/Statics" unique_id=1530718945]
@@ -357,6 +408,7 @@ transform = Transform3D(0.955793, 0, -0.29404032, 0, 1, 0, 0.29404032, 0, 0.9557
 
 [node name="DeskComputer" parent="Level/Props" unique_id=1158682513 instance=ExtResource("3_jw32o")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.30183995, 0.80264884, -2.17027)
+RenderLayer = 3
 
 [node name="PottedPlant" parent="Level/Props" unique_id=1079158969 instance=ExtResource("4_5hndv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0863228, 0.033708274, -2.2977076)
@@ -374,47 +426,77 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.104742, 0.033708274, -2.29
 
 [node name="Shaders" type="Node3D" parent="." unique_id=1358280161]
 
-[node name="Sobel" type="MeshInstance3D" parent="Shaders" unique_id=1723742747]
-visible = false
-cast_shadow = 0
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_5kxh1")
-
-[node name="SphereViewPort" type="SubViewport" parent="Shaders" unique_id=630188881]
+[node name="NoiseSphereViewPort" type="SubViewport" parent="Shaders" unique_id=630188881]
 own_world_3d = true
 handle_input_locally = false
 canvas_item_default_texture_repeat = 2
 size = Vector2i(720, 405)
 render_target_update_mode = 4
 
-[node name="Camera2" type="Camera3D" parent="Shaders/SphereViewPort" unique_id=822525332 node_paths=PackedStringArray("Target")]
+[node name="NoiseCamera" type="Camera3D" parent="Shaders/NoiseSphereViewPort" unique_id=822525332 node_paths=PackedStringArray("Target")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 top_level = true
 cull_mask = 1047554
 current = true
 script = ExtResource("14_ifjly")
-Target = NodePath("../../../Player/CameraVerticalGimble/Camera")
+Target = NodePath("../../../Player/CameraVerticalGimble/MainCamera")
 
-[node name="Icosphere" type="MeshInstance3D" parent="Shaders/SphereViewPort" unique_id=1465436171]
-transform = Transform3D(0.215, 0, 0, 0, 0.215, 0, 0, 0, 0.215, 0, 0.5, 0)
+[node name="NoiseIcosphere" type="MeshInstance3D" parent="Shaders/NoiseSphereViewPort" unique_id=1465436171]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0.5, 0)
 layers = 2
 cast_shadow = 0
 mesh = SubResource("ArrayMesh_5tp72")
 
-[node name="NoiseSphere" type="MeshInstance3D" parent="Shaders/SphereViewPort" unique_id=1412532094]
+[node name="RedItemsViewPort" type="SubViewport" parent="Shaders" unique_id=459516151]
+transparent_bg = true
+size = Vector2i(720, 405)
+
+[node name="RedLayerCamera" type="Camera3D" parent="Shaders/RedItemsViewPort" unique_id=1503219627 node_paths=PackedStringArray("Target")]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 1.2991464, 0)
+cull_mask = 4
+script = ExtResource("15_al0fu")
+Target = NodePath("../../../Player/CameraVerticalGimble/MainCamera")
+
+[node name="Sobel" type="MeshInstance3D" parent="Shaders" unique_id=1723742747]
+visible = false
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_5kxh1")
+
+[node name="SphereShader2" type="MeshInstance3D" parent="Shaders" unique_id=765540097 node_paths=PackedStringArray("viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 visible = false
-layers = 2
 cast_shadow = 0
-mesh = SubResource("SphereMesh_16e68")
-script = ExtResource("16_7ebnv")
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_7ebnv")
+script = ExtResource("18_kxdq8")
+viewport = NodePath("../NoiseSphereViewPort")
 
-[node name="SphereShader" type="MeshInstance3D" parent="Shaders" unique_id=1948967773 node_paths=PackedStringArray("viewport")]
+[node name="SphereShader3" type="MeshInstance3D" parent="Shaders" unique_id=802176759 node_paths=PackedStringArray("viewport")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
 cast_shadow = 0
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_al0fu")
 script = ExtResource("18_kxdq8")
-viewport = NodePath("../SphereViewPort")
+viewport = NodePath("../NoiseSphereViewPort")
+
+[node name="RedLayer3" type="MeshInstance3D" parent="Shaders" unique_id=1376565924 node_paths=PackedStringArray("viewport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_p1qjh")
+script = ExtResource("18_kxdq8")
+viewport = NodePath("../NoiseSphereViewPort")
+
+[node name="ColorProcessing" type="MeshInstance3D" parent="Shaders" unique_id=1207612883 node_paths=PackedStringArray("viewport")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+visible = false
+cast_shadow = 0
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_1uq8n")
+script = ExtResource("18_kxdq8")
+viewport = NodePath("../NoiseSphereViewPort")
 
 [editable path="Player"]
+[editable path="Level/Props/PottedPlant2"]
+[editable path="Level/Props/PottedPlant2/PottedPlant"]

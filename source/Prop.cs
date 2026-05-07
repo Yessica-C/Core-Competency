@@ -5,9 +5,18 @@ using Godot;
 [GlobalClass, Icon("res://resources/Icons/PropNode.png")]
 public partial class Prop : RigidBody3D
 {
+    [Export]
+    public int RenderLayer = 1;
     private Vector3 TargetPos;
     private bool Held = false;
     private Node OldParent;
+
+    public override void _EnterTree()
+    {
+        base._EnterTree();
+        setVisibleLayer(RenderLayer);
+    }
+
     public void PickUp(Node3D NewHolder)
     {
         Held = true;
@@ -37,6 +46,28 @@ public partial class Prop : RigidBody3D
         return Held;
     }
 
+    public void setVisibleLayer(int newLayer)
+    {
+        Godot.Collections.Array<Node> allMeshes = FindChildren("*", "MeshInstance3D", true);
+        foreach(Node n in allMeshes)
+        {
+            if (n is MeshInstance3D)
+            {
+                MeshInstance3D mesh = (MeshInstance3D)n;
+                for(int i = 1; i < 20; i++)
+                {
+                    if(i == newLayer)//if is new layer turn on
+                    {
+                        mesh.SetLayerMaskValue(i, true);
+                    }
+                    else//if is not new layer turn off
+                    {
+                        mesh.SetLayerMaskValue(i, false);
+                    }
+                }
+            }
+        }
+    }
     private void DisableHitboxes()
     {        
         Godot.Collections.Array<Node> children = GetChildren();

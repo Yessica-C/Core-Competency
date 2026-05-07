@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://d01wxwsvcnprv"]
 
-[ext_resource type="Texture2D" uid="uid://odpfsx2pw0yg" path="res://resources/PrototypeTextures/Dark/texture_01.png" id="1_5bh64"]
+[ext_resource type="Texture2D" uid="uid://cmvhrvwge003g" path="res://resources/Icons/ColorspaceTest.png" id="1_fcyo8"]
 [ext_resource type="PackedScene" uid="uid://cxdqjcmmvncjs" path="res://scenes/Levels/GreyboxDoorway.tscn" id="2_mj47d"]
+[ext_resource type="Texture2D" uid="uid://dw6rxlbemrvh8" path="res://resources/FloorTest.png" id="3_5bh64"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4gbkq"]
 size = Vector3(0.25, 3, 3)
@@ -24,8 +25,8 @@ size = Vector3(0.25, 3, 14)
 size = Vector3(0.25, 3, 28)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vuobu"]
-albedo_texture = ExtResource("1_5bh64")
-uv1_scale = Vector3(28, 1, 28)
+albedo_texture = ExtResource("1_fcyo8")
+uv1_scale = Vector3(20, 2, 28)
 
 [sub_resource type="BoxMesh" id="BoxMesh_rus8l"]
 material = SubResource("StandardMaterial3D_vuobu")
@@ -62,7 +63,13 @@ size = Vector3(0.25, 3, 1.6)
 [sub_resource type="BoxShape3D" id="BoxShape3D_idj7w"]
 size = Vector3(14, 0.1, 28)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mj47d"]
+albedo_texture = ExtResource("3_5bh64")
+albedo_texture_force_srgb = true
+uv1_scale = Vector3(14, 28, 28)
+
 [sub_resource type="BoxMesh" id="BoxMesh_5hndv"]
+material = SubResource("StandardMaterial3D_mj47d")
 size = Vector3(14, 0.1, 28)
 
 [node name="GreyboxOffice" type="Node" unique_id=1448307601]
@@ -130,6 +137,7 @@ transform = Transform3D(0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, 0.70
 shape = SubResource("BoxShape3D_4gbkq")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Walls/Wall16" unique_id=1416270955]
+visible = false
 mesh = SubResource("BoxMesh_x8jgs")
 
 [node name="Wall6" type="StaticBody3D" parent="Walls" unique_id=1796207521]
@@ -228,6 +236,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.5, -0.1, 11)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor+Ceiling/Floor" unique_id=371921707]
 shape = SubResource("BoxShape3D_idj7w")
+debug_fill = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor+Ceiling/Floor" unique_id=2113113524]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01717472, -9.536743e-07, 0.012942314)
@@ -239,6 +248,7 @@ visible = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Floor+Ceiling/Ceiling" unique_id=1552573410]
 shape = SubResource("BoxShape3D_idj7w")
+debug_fill = false
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Floor+Ceiling/Ceiling" unique_id=1036410975]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01717472, -9.536743e-07, 0.012942314)
